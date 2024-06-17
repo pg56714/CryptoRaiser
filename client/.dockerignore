@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+yarn-error.log
+.git
+.DS_Store
+.dockerignore
+Dockerfile
