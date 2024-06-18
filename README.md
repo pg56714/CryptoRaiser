@@ -61,7 +61,7 @@ Currently, the project is limited to creating fundraising events, but there is n
 
 - [ ] **3. Display and Management of Event Status**(CrownFundingTemp.sol):
 
-  - Currently, there is no display of the event status on the screen, nor is there any proper handling of expired events. Therefore, an event status feature will be added, with statuses including: ongoing event, event concluded with successful fundraising, and event concluded with unsuccessful fundraising (refunds made to donors). This will facilitate front-end processing and inform users of the event's progress.
+  - Currently, there is no display of the event status on the screen, nor is there any proper handling of expired events. Therefore, an event status feature will be added, with statuses including: ongoing event, event concluded with successful fundraising, and event concluded with unsuccessful fundraising (refunds made to donors), After the event ends, the number of days cannot be negative. This will facilitate front-end processing and inform users of the event's progress.
 
 - [ ] **4. Contract Upgrade Feature**:
 
