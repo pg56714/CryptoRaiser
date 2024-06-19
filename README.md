@@ -69,7 +69,7 @@ Currently, the project is limited to creating fundraising events, but there is n
 
 - [x] **5. Currently, the event creation interface allows setting a date earlier than today**(CrownFundingTemp.sol):
 
-  - The event date setting on the current event creation interface has an issue. The code require(campaign.deadline < block.timestamp, "The deadline should be a date in the future."); needs to be corrected.
+  - The event date setting on the event creation interface has an issue. The code require(campaign.deadline < block.timestamp, "The deadline should be a date in the future."); needs to be corrected.
 
 - [x] **6. Security Measures Against Reentrancy Attacks**(CrownFundingTemp.sol):
 
