@@ -67,23 +67,27 @@ Currently, the project is limited to creating fundraising events, but there is n
 
   - A contract upgrade feature will be added because after identifying shortcomings, it was found that contracts cannot be deleted, whether on the testnet or the mainnet. However, it is possible to deploy new versions of the contract. In future contract development, it will be necessary to include a migration mechanism or upgrade plan to avoid the need for redeployment when additions or changes are made.
 
-- [x] **5. Security Measures Against Reentrancy Attacks**(CrownFundingTemp.sol):
+- [x] **5. Currently, the event creation interface allows setting a date earlier than today**(CrownFundingTemp.sol):
+
+  - The event date setting on the current event creation interface has an issue. The code require(campaign.deadline < block.timestamp, "The deadline should be a date in the future."); needs to be corrected.
+
+- [x] **6. Security Measures Against Reentrancy Attacks**(CrownFundingTemp.sol):
 
   - When using `.call{value:...}("")` for transferring Ether, it should be noted that this method can potentially lead to reentrancy attacks. Although this code changes the state immediately after the transfer, reducing the risk, it is safer to use `transfer()` or `send()`, or to change the state before executing the payment to prevent potential security issues.
 
-- [x] **6. Optimize Data Storage Structure**(CrownFundingTemp.sol):
+- [x] **7. Optimize Data Storage Structure**(CrownFundingTemp.sol):
 
   - Using dynamic arrays `donators` and `donations` to store all donation information may consume a lot of gas, especially when there are many donations. Consider using a mapping to track the total donations of each donor, which might be more efficient.
 
-- [ ] **7. Automatically execute the donation mechanism after the event ends**(CrownFundingTemp.sol):
+- [ ] **8. Automatically execute the donation mechanism after the event ends**(CrownFundingTemp.sol):
 
   - Currently, there are no restrictions on who can call the `finalizeCampaign` function, which could allow anyone to attempt to conclude the event. Usually, only the event owner or contract administrator should be allowed to perform this action. If `finalizeCampaign` needs to be executed automatically after the event ends, use third-party services (such as Chainlink Keepers or Ethereum Alarm Clock) to periodically check the conditions and automatically execute the smart contract functions, as Solidity itself does not support automatic execution.
 
-- [ ] **8. Utilize External Time Source for Business Logic**(CrownFundingTemp.sol):
+- [ ] **9. Utilize External Time Source for Business Logic**(CrownFundingTemp.sol):
 
   - When using `block.timestamp` as part of the business logic, it should be noted that miners can manipulate block timestamps within a certain range. If you do not use `block.timestamp`, consider using an external time source to set and check the time. This can be achieved through a decentralized oracle (e.g., Chainlink).
 
-- [x] **9. Addition of Smart Contract Events**(CrownFundingTemp.sol):
+- [x] **10. Addition of Smart Contract Events**(CrownFundingTemp.sol):
   - Added events `CampaignCreated`, `DonationReceived`, and `CampaignFinalized` to facilitate front-end applications in tracking changes in the contract status.
 
 ## Source
